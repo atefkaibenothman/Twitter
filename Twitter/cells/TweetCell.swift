@@ -21,9 +21,10 @@ class TweetCell: UITableViewCell {
     
     var favorited: Bool = false
     var tweetID: Int = -1
+    var retweeted: Bool = false
     
     
-    func setFavorite(isFavorated:Bool) {
+    func setFavorite(isFavorated: Bool) {
         favorited = isFavorated
         if (favorited) {
             favButton.setImage(UIImage(named: "favor-icon-red"), for: UIControl.State.normal)
@@ -33,6 +34,18 @@ class TweetCell: UITableViewCell {
         }
     }
     
+    func setRetweet(isRetweeted: Bool) {
+
+        retweeted = isRetweeted
+        
+        if (retweeted) {
+            retweetButton.setImage(UIImage(named: "retweet-icon-green"), for: UIControl.State.normal)
+        } else {
+            retweetButton.setImage(UIImage(named: "retweet-icon"), for: UIControl.State.normal)
+        }
+        
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -40,15 +53,14 @@ class TweetCell: UITableViewCell {
         profilePicture.layer.cornerRadius = self.profilePicture.frame.size.width / 2
         profilePicture.clipsToBounds = true
         
-        
-        
-        
     }
 
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        
     }
     
     @IBAction func onFavButton(_ sender: Any) {
@@ -57,51 +69,87 @@ class TweetCell: UITableViewCell {
         
         if (tobeFavorited) {
             TwitterAPICaller.client?.favoriteTweet(tweetID: tweetID, success: {
+                
                 self.setFavorite(isFavorated: true)
+                
+                if (!(self.favCount.text?.contains("k"))!) {
+                    
+                    self.favCount.textColor = UIColor(red: (229/255.0), green: (33/255.0), blue: (74/255.0), alpha: 1.0)
+                    self.favCount.text = String((Int(self.favCount.text!)! + 1))
+                    
+                } else {
+                    
+                    self.favCount.textColor = UIColor(red: (229/255.0), green: (33/255.0), blue: (74/255.0), alpha: 1.0)
+                    
+                }
+                
             }, failure: { (error) in
                 print("Favorite did not succeed: \(error)")
             })
-
-            
-            if (!(favCount.text?.contains("k"))!) {
-                
-                favCount.textColor = UIColor(red: (229/255.0), green: (33/255.0), blue: (74/255.0), alpha: 1.0)
-                favCount.text = String((Int(favCount.text!)! + 1))
-                
-            } else {
-                
-                favCount.textColor = UIColor(red: (229/255.0), green: (33/255.0), blue: (74/255.0), alpha: 1.0)
-                
-            }
-            
             
             
         } else {
             TwitterAPICaller.client?.destroyTweet(tweetID: tweetID, success: {
+                
                 self.setFavorite(isFavorated: false)
+                
+                if (!(self.favCount.text?.contains("k"))!) {
+                    
+                    if ((Int(self.favCount.text!)! - 1) >= 0) {
+                        self.favCount.text = String((Int(self.favCount.text!)! - 1))
+                    } else {
+                        self.favCount.text = "0"
+                    }
+                    
+                }
+                
+                self.favCount.textColor = UIColor(red: (170/255.0), green: (184/255.0), blue: (195/255.0), alpha: 1.0)
+                
             }, failure: { (error) in
                 print("Unfavorite did not succeed: \(error)")
             })
-            
-            if (!(favCount.text?.contains("k"))!) {
-                
-                if ((Int(favCount.text!)! - 1) >= 0) {
-                    favCount.text = String((Int(favCount.text!)! - 1))
-                } else {
-                    favCount.text = "0"
-                }
-                
-                
-            }
-            
-            favCount.textColor = UIColor(red: (170/255.0), green: (184/255.0), blue: (195/255.0), alpha: 1.0)
-            
+        
         }
         
         
     }
     
+    
+    
     @IBAction func onRetweetButton(_ sender: Any) {
+        
+        let tobeRetweeted = !retweeted
+        
+        if (tobeRetweeted) {
+            
+            TwitterAPICaller.client?.retweet(tweetID: tweetID, success: {
+                
+                self.setRetweet(isRetweeted: true)
+                self.retweetCount.textColor = UIColor(red: (0/255.0), green: (207/255.0), blue: (130/255.0), alpha: 1.0)
+                self.retweetCount.text = String(Int(self.retweetCount.text!)! + 1)
+                
+            }, failure: { (error) in
+                print("Retweet did not succeed: \(error)")
+            })
+            
+            
+            
+        } else {
+            
+            TwitterAPICaller.client?.unretweet(tweetID: tweetID, success: {
+                
+                self.setRetweet(isRetweeted: false)
+                self.retweetCount.textColor = UIColor(red: (170/255.0), green: (184/255.0), blue: (195/255.0), alpha: 1.0)
+                self.retweetCount.text = String(Int(self.retweetCount.text!)! - 1)
+                
+            }, failure: { (error) in
+                print("Unretweet did not succeed: \(error)")
+            })
+            
+            
+            
+        }
+        
         
     }
     

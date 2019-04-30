@@ -118,6 +118,19 @@ class HomeTableViewController: UITableViewController {
         cell.tweetContent.text = tweetArray[indexPath.row]["text"] as? String
         
         cell.setFavorite(isFavorated: tweetArray[indexPath.row]["favorited"] as! Bool)
+        cell.setRetweet(isRetweeted: tweetArray[indexPath.row]["retweeted"] as! Bool)
+        
+        if (tweetArray[indexPath.row]["favorited"] as! Bool == true) {
+            
+            cell.favCount.textColor = UIColor(red: (229/255.0), green: (33/255.0), blue: (74/255.0), alpha: 1.0)
+            
+        }
+        
+        if (tweetArray[indexPath.row]["retweeted"] as! Bool == true) {
+            
+            cell.retweetCount.textColor = UIColor(red: (0/255.0), green: (207/255.0), blue: (130/255.0), alpha: 1.0)
+            
+        }
         
         cell.tweetID = tweetArray[indexPath.row]["id"] as! Int
         
@@ -130,10 +143,10 @@ class HomeTableViewController: UITableViewController {
         if (favCount >= 5000.0) {
             
             favCount = round((favCount / 1000.0) * 10) / 10
-            
             cell.favCount.text = String(favCount) + "k"
             
         }
+        
         
         return cell
         
