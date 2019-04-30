@@ -40,6 +40,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A14E6FB2277E8290018BE70 /* storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				6EBCF54D21E71F9400451C03 /* Launch Screen.storyboard */,
+				6EBCF52921DF07FC00451C03 /* Main.storyboard */,
+			);
+			path = storyboards;
+			sourceTree = "<group>";
+		};
+		2A14E6FC2277E83E0018BE70 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6EBCF54321E047A500451C03 /* TwitterAPICaller.swift */,
+				6EBCF52521DF07FC00451C03 /* AppDelegate.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		2A14E6FD2277E85E0018BE70 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				37D29B8521F90E3400984A88 /* Assets.xcassets */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
 		6BFB9ED923EC02A96AB79DEE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -70,11 +96,9 @@
 		6EBCF52421DF07FC00451C03 /* Twitter */ = {
 			isa = PBXGroup;
 			children = (
-				6EBCF54D21E71F9400451C03 /* Launch Screen.storyboard */,
-				6EBCF52921DF07FC00451C03 /* Main.storyboard */,
-				6EBCF54321E047A500451C03 /* TwitterAPICaller.swift */,
-				6EBCF52521DF07FC00451C03 /* AppDelegate.swift */,
-				37D29B8521F90E3400984A88 /* Assets.xcassets */,
+				2A14E6FD2277E85E0018BE70 /* assets */,
+				2A14E6FC2277E83E0018BE70 /* controllers */,
+				2A14E6FB2277E8290018BE70 /* storyboards */,
 				6EBCF53121DF07FE00451C03 /* Info.plist */,
 			);
 			path = Twitter;
@@ -347,7 +371,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EJTT2N9E3L;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Twitter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -367,7 +391,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EJTT2N9E3L;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Twitter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
