@@ -24,6 +24,9 @@ class HomeTableViewController: UITableViewController {
         
         tableView.refreshControl = myRefreshControl
         
+        tableView.estimatedRowHeight = 180
+        tableView.rowHeight = UITableView.automaticDimension
+        
     }
     
     
@@ -117,6 +120,20 @@ class HomeTableViewController: UITableViewController {
         cell.setFavorite(isFavorated: tweetArray[indexPath.row]["favorited"] as! Bool)
         
         cell.tweetID = tweetArray[indexPath.row]["id"] as! Int
+        
+        cell.retweetCount.text = "\(tweetArray[indexPath.row]["retweet_count"] ?? "")"
+        
+        cell.favCount.text = "\(tweetArray[indexPath.row]["favorite_count"] ?? "")"
+        
+        var favCount = Double(cell.favCount.text!)!
+        
+        if (favCount >= 5000.0) {
+            
+            favCount = round((favCount / 1000.0) * 10) / 10
+            
+            cell.favCount.text = String(favCount) + "k"
+            
+        }
         
         return cell
         

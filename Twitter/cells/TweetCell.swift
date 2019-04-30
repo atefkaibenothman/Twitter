@@ -16,6 +16,8 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var tweetScreenName: UILabel!
     @IBOutlet weak var retweetButton: UIButton!
     @IBOutlet weak var favButton: UIButton!
+    @IBOutlet weak var retweetCount: UILabel!
+    @IBOutlet weak var favCount: UILabel!
     
     var favorited: Bool = false
     var tweetID: Int = -1
@@ -38,6 +40,9 @@ class TweetCell: UITableViewCell {
         profilePicture.layer.cornerRadius = self.profilePicture.frame.size.width / 2
         profilePicture.clipsToBounds = true
         
+        
+        
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -56,13 +61,40 @@ class TweetCell: UITableViewCell {
             }, failure: { (error) in
                 print("Favorite did not succeed: \(error)")
             })
+
+            
+            if (!(favCount.text?.contains("k"))!) {
+                
+                favCount.textColor = UIColor(red: (229/255.0), green: (33/255.0), blue: (74/255.0), alpha: 1.0)
+                favCount.text = String((Int(favCount.text!)! + 1))
+                
+            } else {
+                
+                favCount.textColor = UIColor(red: (229/255.0), green: (33/255.0), blue: (74/255.0), alpha: 1.0)
+                
+            }
+            
+            
             
         } else {
             TwitterAPICaller.client?.destroyTweet(tweetID: tweetID, success: {
                 self.setFavorite(isFavorated: false)
             }, failure: { (error) in
-                print("Unfavorite did not succed: \(error)")
+                print("Unfavorite did not succeed: \(error)")
             })
+            
+            if (!(favCount.text?.contains("k"))!) {
+                
+                if ((Int(favCount.text!)! - 1) >= 0) {
+                    favCount.text = String((Int(favCount.text!)! - 1))
+                } else {
+                    favCount.text = "0"
+                }
+                
+                
+            }
+            
+            favCount.textColor = UIColor(red: (170/255.0), green: (184/255.0), blue: (195/255.0), alpha: 1.0)
             
         }
         
