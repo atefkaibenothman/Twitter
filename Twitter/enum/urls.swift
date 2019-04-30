@@ -11,5 +11,8 @@ import Foundation
 enum Url: String {
     
     case TwitterAPI = "https://api.twitter.com/1.1/statuses/home_timeline.json"
+    case TwitterPostAPI = "https://api.twitter.com/1.1/statuses/update.json"
+    case TwitterFavButton = "https://api.twitter.com/1.1/favorites/create.json"
+    case TwitterDestroyButton = "https://api.twitter.com/1.1/favorites/destroy.json"
     
 }

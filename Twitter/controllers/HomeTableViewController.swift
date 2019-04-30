@@ -27,6 +27,12 @@ class HomeTableViewController: UITableViewController {
     }
     
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadTweet()
+    }
+    
+    
     @objc func loadTweet() {
         
         
@@ -103,9 +109,14 @@ class HomeTableViewController: UITableViewController {
             cell.profilePicture.image = UIImage(data: imageData)
         }
         
+        
         cell.tweetScreenName.text = "@" + (user["screen_name"] as? String)!
         cell.tweetName.text = user["name"] as? String
         cell.tweetContent.text = tweetArray[indexPath.row]["text"] as? String
+        
+        cell.setFavorite(isFavorated: tweetArray[indexPath.row]["favorited"] as! Bool)
+        
+        cell.tweetID = tweetArray[indexPath.row]["id"] as! Int
         
         return cell
         
