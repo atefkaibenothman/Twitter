@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -10,20 +10,36 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Launch Screen-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
-                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                <viewController title="Launch Screen" id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="TwitterLogoBlue" translatesAutoresizingMaskIntoConstraints="NO" id="6xK-Dc-atP">
+                                <rect key="frame" x="135" y="354" width="105" height="104"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.10890620201826096" green="0.13249394297599792" blue="0.17817580699920654" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6xK-Dc-atP" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="CtD-AL-uRa"/>
+                            <constraint firstItem="6xK-Dc-atP" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="135" id="Pt1-bh-E9G"/>
+                            <constraint firstItem="6xK-Dc-atP" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="fsr-ne-Nww"/>
+                            <constraint firstItem="6xK-Dc-atP" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="310" id="tHF-wh-CMG"/>
+                            <constraint firstItem="6xK-Dc-atP" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="toP-CF-Zvu"/>
+                            <constraint firstItem="6xK-Dc-atP" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="uRU-nh-cDN"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+            <point key="canvasLocation" x="52" y="374.6305418719212"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="TwitterLogoBlue" width="133.33332824707031" height="133.33332824707031"/>
+    </resources>
 </document>
