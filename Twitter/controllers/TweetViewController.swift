@@ -37,13 +37,9 @@ class TweetViewController: UIViewController, UITextViewDelegate {
             
             charCountLabel.textColor = UIColor.red
             
-            tweetButton.tintColor = UIColor.red
-            
         } else {
             
             charCountLabel.textColor = UIColor.white
-            
-            tweetButton.tintColor = UIColor(red: (0/255.0), green: (207/255.0), blue: (130/255.0), alpha: 1.0)
             
         }
         
