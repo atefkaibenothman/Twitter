@@ -8,20 +8,67 @@
 
 import UIKit
 
-class TweetViewController: UIViewController {
+class TweetViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var tweetButton: UIBarButtonItem!
     @IBOutlet weak var tweetTextBox: UITextView!
+    @IBOutlet weak var charCountLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        tweetTextBox.delegate = self
+        
         tweetTextBox.becomeFirstResponder()
         
     }
     
-
+    func checkRemainingChar() {
+        
+        let charsinTextView = tweetTextBox.text.count
+        
+        let charsRemaining = 280 - charsinTextView
+        
+        charCountLabel.text = "\(String(charsRemaining)) / 280"
+        
+        if (charsRemaining <= 10) {
+            
+            charCountLabel.textColor = UIColor.red
+            
+            tweetButton.tintColor = UIColor.red
+            
+        } else {
+            
+            charCountLabel.textColor = UIColor.white
+            
+            tweetButton.tintColor = UIColor(red: (0/255.0), green: (207/255.0), blue: (130/255.0), alpha: 1.0)
+            
+        }
+        
+        if (charsRemaining < 0) {
+            
+            tweetButton.tintColor = UIColor(red: (229/255.0), green: (33/255.0), blue: (74/255.0), alpha: 1.0)
+            
+            tweetButton.isEnabled = false
+            
+        } else {
+            
+            tweetButton.isEnabled = true
+            
+        }
+        
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        
+        checkRemainingChar()
+        
+    }
+    
+    
+    
     @IBAction func onCancelButton(_ sender: Any) {
         
         dismiss(animated: true, completion: nil)
