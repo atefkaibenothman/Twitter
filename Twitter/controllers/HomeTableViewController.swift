@@ -39,7 +39,7 @@ class HomeTableViewController: UITableViewController {
     @objc func loadTweet() {
         
         
-        numberOfTweet = 20
+        numberOfTweet = 10
         
         let myParams = ["count": numberOfTweet]
         
@@ -64,7 +64,7 @@ class HomeTableViewController: UITableViewController {
     
     func loadMoreTweet() {
     
-        numberOfTweet = numberOfTweet + 20
+        numberOfTweet = numberOfTweet + 15
         
         let myParams = ["count": numberOfTweet]
         
@@ -120,17 +120,17 @@ class HomeTableViewController: UITableViewController {
         cell.setFavorite(isFavorated: tweetArray[indexPath.row]["favorited"] as! Bool)
         cell.setRetweet(isRetweeted: tweetArray[indexPath.row]["retweeted"] as! Bool)
         
-        if (tweetArray[indexPath.row]["favorited"] as! Bool == true) {
-            
-            cell.favCount.textColor = UIColor(red: (229/255.0), green: (33/255.0), blue: (74/255.0), alpha: 1.0)
-            
-        }
-        
-        if (tweetArray[indexPath.row]["retweeted"] as! Bool == true) {
-            
-            cell.retweetCount.textColor = UIColor(red: (0/255.0), green: (207/255.0), blue: (130/255.0), alpha: 1.0)
-            
-        }
+//        if (tweetArray[indexPath.row]["favorited"] as! Bool == true) {
+//
+//            cell.favCount.textColor = UIColor(red: (229/255.0), green: (33/255.0), blue: (74/255.0), alpha: 1.0)
+//
+//        }
+//
+//        if (tweetArray[indexPath.row]["retweeted"] as! Bool == true) {
+//
+//            cell.retweetCount.textColor = UIColor(red: (0/255.0), green: (207/255.0), blue: (130/255.0), alpha: 1.0)
+//
+//        }
         
         cell.tweetID = tweetArray[indexPath.row]["id"] as! Int
         

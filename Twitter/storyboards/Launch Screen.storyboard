@@ -19,7 +19,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="TwitterLogoBlue" translatesAutoresizingMaskIntoConstraints="NO" id="6xK-Dc-atP">
-                                <rect key="frame" x="135" y="354" width="105" height="104"/>
+                                <rect key="frame" x="135" y="354.33333333333337" width="105" height="105"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="105" id="6mS-gA-euG"/>
+                                    <constraint firstAttribute="width" constant="105" id="EtK-dE-qb7"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.10890620201826096" green="0.13249394297599792" blue="0.17817580699920654" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

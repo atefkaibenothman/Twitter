@@ -28,9 +28,10 @@ class TweetCell: UITableViewCell {
         favorited = isFavorated
         if (favorited) {
             favButton.setImage(UIImage(named: "favor-icon-red"), for: UIControl.State.normal)
+            favCount.textColor = UIColor(red: (229/255.0), green: (33/255.0), blue: (74/255.0), alpha: 1.0)
         } else {
             favButton.setImage(UIImage(named: "favor-icon"), for: UIControl.State.normal)
-            
+            favCount.textColor = UIColor(red: (170/255.0), green: (184/255.0), blue: (195/255.0), alpha: 1.0)
         }
     }
     
@@ -40,8 +41,10 @@ class TweetCell: UITableViewCell {
         
         if (retweeted) {
             retweetButton.setImage(UIImage(named: "retweet-icon-green"), for: UIControl.State.normal)
+            self.retweetCount.textColor = UIColor(red: (0/255.0), green: (207/255.0), blue: (130/255.0), alpha: 1.0)
         } else {
             retweetButton.setImage(UIImage(named: "retweet-icon"), for: UIControl.State.normal)
+            retweetCount.textColor = UIColor(red: (170/255.0), green: (184/255.0), blue: (195/255.0), alpha: 1.0)
         }
         
     }
@@ -74,7 +77,6 @@ class TweetCell: UITableViewCell {
                 
                 if (!(self.favCount.text?.contains("k"))!) {
                     
-                    self.favCount.textColor = UIColor(red: (229/255.0), green: (33/255.0), blue: (74/255.0), alpha: 1.0)
                     self.favCount.text = String((Int(self.favCount.text!)! + 1))
                     
                 } else {
@@ -125,7 +127,7 @@ class TweetCell: UITableViewCell {
             TwitterAPICaller.client?.retweet(tweetID: tweetID, success: {
                 
                 self.setRetweet(isRetweeted: true)
-                self.retweetCount.textColor = UIColor(red: (0/255.0), green: (207/255.0), blue: (130/255.0), alpha: 1.0)
+                
                 self.retweetCount.text = String(Int(self.retweetCount.text!)! + 1)
                 
             }, failure: { (error) in
@@ -139,7 +141,6 @@ class TweetCell: UITableViewCell {
             TwitterAPICaller.client?.unretweet(tweetID: tweetID, success: {
                 
                 self.setRetweet(isRetweeted: false)
-                self.retweetCount.textColor = UIColor(red: (170/255.0), green: (184/255.0), blue: (195/255.0), alpha: 1.0)
                 self.retweetCount.text = String(Int(self.retweetCount.text!)! - 1)
                 
             }, failure: { (error) in
