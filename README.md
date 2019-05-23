@@ -26,7 +26,7 @@ Here's a walkthrough of implemented user stories:
 
 
 
-# Twitter I
+# Twitter
 
 Time spent: **7** hours spent in total
 
